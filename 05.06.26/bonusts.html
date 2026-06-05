@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Management Console App</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color:#f0f2f5;
+            text-align:center;
+        }
+
+        .card{
+            width:400px;
+            margin:50px auto;
+            padding:20px;
+            background:white;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        input{
+            width:80%;
+            padding:10px;
+            margin:8px;
+        }
+
+        button{
+            padding:10px 20px;
+            cursor:pointer;
+        }
+
+        #result{
+            margin-top:20px;
+            text-align:left;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Employee Management System</h2>
+
+        <input type="number" id="id" placeholder="Enter Employee ID">
+
+        <input type="text" id="name" placeholder="Enter Employee Name">
+
+        <input type="text" id="department" placeholder="Enter Department">
+
+        <input type="number" id="salary" placeholder="Enter Salary">
+
+        <input type="number" id="experience" placeholder="Enter Experience">
+
+        <br>
+
+        <button onclick="showEmployeeDetails()">
+            Show Details
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function showEmployeeDetails(){
+
+            let employee = {
+                id: document.getElementById("id").value,
+                name: document.getElementById("name").value,
+                department: document.getElementById("department").value,
+                salary: Number(document.getElementById("salary").value),
+                experience: Number(document.getElementById("experience").value)
+            };
+
+            let bonus = employee.salary * 0.10;
+            let finalSalary = employee.salary + bonus;
+
+            let performance;
+
+            if(employee.experience >= 2){
+                performance = "Good";
+            }else{
+                performance = "Average";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Employee ID : " + employee.id + "<br>" +
+                "Employee Name : " + employee.name + "<br>" +
+                "Department : " + employee.department + "<br>" +
+                "Salary : ₹" + employee.salary + "<br>" +
+                "Experience : " + employee.experience + " Years<br><br>" +
+
+                "Bonus : ₹" + bonus + "<br>" +
+                "Final Salary : ₹" + finalSalary + "<br><br>" +
+
+                "Performance Status : " + performance;
+
+            console.log("Employee ID :", employee.id);
+            console.log("Employee Name :", employee.name);
+            console.log("Department :", employee.department);
+            console.log("Salary :", employee.salary);
+            console.log("Experience :", employee.experience);
+
+            console.log("Bonus :", bonus);
+            console.log("Final Salary :", finalSalary);
+            console.log("Performance Status :", performance);
+
+            console.table({
+                EmployeeID: employee.id,
+                Name: employee.name,
+                Department: employee.department,
+                Salary: employee.salary,
+                Experience: employee.experience,
+                Bonus: bonus,
+                FinalSalary: finalSalary,
+                Performance: performance
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

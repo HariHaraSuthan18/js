@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Attendance System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        select {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Employee Attendance System</h2>
+
+        <select id="isPresent">
+            <option value="">Select Attendance</option>
+            <option value="true">Present</option>
+            <option value="false">Absent</option>
+        </select>
+
+        <br>
+
+        <select id="completedTask">
+            <option value="">Select Task Status</option>
+            <option value="true">Completed</option>
+            <option value="false">Not Completed</option>
+        </select>
+
+        <br><br>
+
+        <button onclick="checkSalary()">
+            Check Eligibility
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function checkSalary() {
+
+            let isPresent =
+                document.getElementById("isPresent").value === "true";
+
+            let completedTask =
+                document.getElementById("completedTask").value === "true";
+
+            let status;
+
+            if (isPresent && completedTask) {
+                status = "Eligible for Salary";
+            } else {
+                status = "Not Eligible";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Attendance : " + isPresent + "<br>" +
+                "Task Completed : " + completedTask + "<br>" +
+                "Status : " + status;
+
+            console.log("Attendance :", isPresent);
+            console.log("Task Completed :", completedTask);
+            console.log("Status :", status);
+
+            console.table({
+                Attendance: isPresent,
+                TaskCompleted: completedTask,
+                Status: status
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

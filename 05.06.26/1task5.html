@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Product Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Array Product Management</h2>
+
+        <button onclick="showProducts()">
+            Show Products
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function showProducts() {
+
+            let products = ["Laptop", "Mobile", "Mouse", "Keyboard"];
+
+            let firstProduct = products[0];
+            let lastProduct = products[products.length - 1];
+            let totalProducts = products.length;
+
+            document.getElementById("result").innerHTML =
+                "First Product : " + firstProduct + "<br>" +
+                "Last Product : " + lastProduct + "<br>" +
+                "Total Products : " + totalProducts;
+
+            console.log("First Product :", firstProduct);
+            console.log("Last Product :", lastProduct);
+            console.log("Total Products :", totalProducts);
+
+            console.table(products);
+
+        }
+
+    </script>
+
+</body>
+</html>

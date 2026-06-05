@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Login Form</h2>
+
+        <input type="email" id="email" placeholder="Enter Email">
+
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <button onclick="validateLogin()">
+            Login
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function validateLogin() {
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (email === "admin@gmail.com" && password === "12345") {
+
+                document.getElementById("result").innerHTML =
+                    "✅ Login Success";
+
+                console.log("Login Success");
+
+            } else {
+
+                document.getElementById("result").innerHTML =
+                    "❌ Login Failed";
+
+                console.log("Login Failed");
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Eligibility Checker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Age Eligibility Checker</h2>
+
+        <input type="number" id="age" placeholder="Enter Your Age">
+
+        <br>
+
+        <button onclick="checkEligibility()">
+            Check
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function checkEligibility() {
+
+            let age = document.getElementById("age").value;
+
+            let status;
+
+            if (age >= 18) {
+                status = "Eligible for Voting";
+            } else {
+                status = "Not Eligible";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Age : " + age + "<br>" +
+                "Status : " + status;
+
+            console.log("Age :", age);
+            console.log("Status :", status);
+
+            console.table({
+                Age: age,
+                Status: status
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

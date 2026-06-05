@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Object</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Employee Details</h2>
+
+        <input type="text" id="name" placeholder="Enter Employee Name">
+
+        <input type="text" id="department" placeholder="Enter Department">
+
+        <input type="number" id="salary" placeholder="Enter Salary">
+
+        <br><br>
+
+        <button onclick="showEmployee()">
+            Show Details
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function showEmployee() {
+
+            let employee = {
+                name: document.getElementById("name").value,
+                department: document.getElementById("department").value,
+                salary: document.getElementById("salary").value
+            };
+
+            document.getElementById("result").innerHTML =
+                "Name : " + employee.name + "<br>" +
+                "Department : " + employee.department + "<br>" +
+                "Salary : ₹" + employee.salary;
+
+            console.log("Employee Details");
+            console.log(employee);
+
+            console.log("Employee Name :", employee.name);
+            console.log("Salary :", employee.salary);
+
+            console.table(employee);
+
+        }
+
+    </script>
+
+</body>
+</html>

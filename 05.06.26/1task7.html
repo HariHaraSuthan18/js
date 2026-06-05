@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Cart Total</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>E-Commerce Cart</h2>
+
+        <input type="number" id="shirt" placeholder="Enter Shirt Price">
+
+        <input type="number" id="pant" placeholder="Enter Pant Price">
+
+        <input type="number" id="shoe" placeholder="Enter Shoe Price">
+
+        <br><br>
+
+        <button onclick="calculateBill()">
+            Calculate Bill
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function calculateBill() {
+
+            let shirt = Number(document.getElementById("shirt").value);
+            let pant = Number(document.getElementById("pant").value);
+            let shoe = Number(document.getElementById("shoe").value);
+
+            let totalBill = shirt + pant + shoe;
+
+            let discount = totalBill * 0.10;
+
+            let finalAmount = totalBill - discount;
+
+            document.getElementById("result").innerHTML =
+                "Total Bill : ₹" + totalBill + "<br>" +
+                "Discount (10%) : ₹" + discount + "<br>" +
+                "Final Amount : ₹" + finalAmount;
+
+            console.log("Total Bill :", totalBill);
+            console.log("Discount :", discount);
+            console.log("Final Amount :", finalAmount);
+
+            console.table({
+                Shirt: shirt,
+                Pant: pant,
+                Shoe: shoe,
+                TotalBill: totalBill,
+                Discount: discount,
+                FinalAmount: finalAmount
+            });
+        }
+
+    </script>
+
+</body>
+</html>

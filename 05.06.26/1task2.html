@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Bonus Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Employee Bonus Calculator</h2>
+
+        <input type="number" id="salary" placeholder="Enter Salary">
+
+        <br>
+
+        <button onclick="calculateBonus()">
+            Calculate Bonus
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function calculateBonus() {
+
+            let salary = Number(document.getElementById("salary").value);
+
+            let bonus = salary * 0.10;
+
+            let finalSalary = salary + bonus;
+
+            document.getElementById("result").innerHTML =
+                "Original Salary : ₹" + salary + "<br>" +
+                "Bonus (10%) : ₹" + bonus + "<br>" +
+                "Final Salary : ₹" + finalSalary;
+
+            console.log("Original Salary :", salary);
+            console.log("Bonus :", bonus);
+            console.log("Final Salary :", finalSalary);
+
+            console.table({
+                Salary: salary,
+                Bonus: bonus,
+                FinalSalary: finalSalary
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

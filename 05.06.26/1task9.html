@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Increment Decrement Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: left;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Increment Decrement Practice</h2>
+
+        <input type="number" id="value" placeholder="Enter a Value">
+
+        <br>
+
+        <button onclick="showValues()">
+            Calculate
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function showValues() {
+
+            let a = Number(document.getElementById("value").value);
+
+            let initial = a;
+
+            a++;
+            let afterPostIncrement = a;
+
+            ++a;
+            let afterPreIncrement = a;
+
+            a--;
+            let afterPostDecrement = a;
+
+            --a;
+            let afterPreDecrement = a;
+
+            document.getElementById("result").innerHTML =
+                "Initial Value : " + initial + "<br><br>" +
+                "After a++ : " + afterPostIncrement + "<br>" +
+                "After ++a : " + afterPreIncrement + "<br>" +
+                "After a-- : " + afterPostDecrement + "<br>" +
+                "After --a : " + afterPreDecrement;
+
+            console.log("Initial Value :", initial);
+            console.log("After a++ :", afterPostIncrement);
+            console.log("After ++a :", afterPreIncrement);
+            console.log("After a-- :", afterPostDecrement);
+            console.log("After --a :", afterPreDecrement);
+
+            console.table({
+                Initial: initial,
+                "After a++": afterPostIncrement,
+                "After ++a": afterPreIncrement,
+                "After a--": afterPostDecrement,
+                "After --a": afterPreDecrement
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

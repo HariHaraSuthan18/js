@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result Checker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Student Result Checker</h2>
+
+        <input type="number" id="marks" placeholder="Enter Marks">
+
+        <br>
+
+        <button onclick="checkResult()">
+            Check Result
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function checkResult() {
+
+            let marks = document.getElementById("marks").value;
+
+            let status = (marks >= 35) ? "Pass" : "Fail";
+
+            let grade;
+
+            if (marks >= 90) {
+                grade = "Grade A";
+            }
+            else if (marks >= 75) {
+                grade = "Grade B";
+            }
+            else if (marks >= 60) {
+                grade = "Grade C";
+            }
+            else {
+                grade = "No Grade";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Marks : " + marks + "<br>" +
+                "Result : " + status + "<br>" +
+                "Grade : " + grade;
+
+            console.log("Marks :", marks);
+            console.log("Result :", status);
+            console.log("Grade :", grade);
+
+            console.table({
+                Marks: marks,
+                Result: status,
+                Grade: grade
+            });
+        }
+
+    </script>
+
+</body>
+</html>
