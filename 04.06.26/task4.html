@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Box</title>
+</head>
+<body>
+
+    <h2>Do you know JavaScript?</h2>
+
+    <button onclick="showResult(true)">
+        Yes
+    </button>
+
+    <button onclick="showResult(false)">
+        No
+    </button>
+
+    <br><br>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        function showResult(answer) {
+
+            document.getElementById("result").innerHTML =
+                "Result : " + answer;
+
+            console.log(answer);
+
+            console.table({
+                Result: answer
+            });
+        }
+
+    </script>
+
+</body>
+</html>

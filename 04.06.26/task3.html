@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Name</title>
+</head>
+<body>
+
+    <h2>User Name</h2>
+
+    <input type="text" id="username" placeholder="Enter Your Name">
+
+    <button onclick="showName()">
+        Submit
+    </button>
+
+    <br><br>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        function showName() {
+
+            let userName =
+            document.getElementById("username").value;
+
+            // Screen Output
+            document.getElementById("result").innerHTML =
+            "Welcome " + userName;
+
+            // Console Output
+            console.log("Welcome " + userName);
+
+            // Console Table
+            console.table({
+                Name: userName
+            });
+        }
+
+    </script>
+
+</body>
+</html>

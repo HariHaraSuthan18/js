@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Form</title>
+</head>
+<body>
+
+    <h2>Student Information</h2>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+
+        <tr>
+            <td>Age</td>
+            <td><input type="number" id="age"></td>
+        </tr>
+
+        <tr>
+            <td>City</td>
+            <td><input type="text" id="city"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button onclick="showData()">Submit</button>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function showData() {
+
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let city = document.getElementById("city").value;
+
+            // Screen Output
+            document.getElementById("result").innerHTML =
+                "Name : " + name + "<br>" +
+                "Age : " + age + "<br>" +
+                "City : " + city;
+
+            // Console Output
+            console.log("Name : " + name);
+            console.log("Age : " + age);
+            console.log("City : " + city);
+
+            // Table Format in Console
+            console.table({
+                Name: name,
+                Age: age,
+                City: city
+            });
+        }
+    </script>
+
+</body>
+</html>

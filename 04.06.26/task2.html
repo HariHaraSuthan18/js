@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Var Let Const</title>
+</head>
+<body>
+
+    <h2>Company Details</h2>
+
+    <button onclick="showData()">
+        Show Details
+    </button>
+
+    <br><br>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        function showData() {
+
+            var company = "Stackly";
+            let salary = 20000;
+            const country = "India";
+
+            // Update Values
+            company = "Google";
+            salary = 30000;
+
+            // Screen Output
+            document.getElementById("result").innerHTML =
+                "Company : " + company + "<br>" +
+                "Salary : " + salary + "<br>" +
+                "Country : " + country;
+
+            // Console Output
+            console.log(company);
+            console.log(salary);
+            console.log(country);
+
+            // Console Table
+            console.table({
+                Company: company,
+                Salary: salary,
+                Country: country
+            });
+        }
+
+    </script>
+
+</body>
+</html>

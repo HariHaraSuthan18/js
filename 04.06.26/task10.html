@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Challenge</title>
+</head>
+<body>
+
+    <h2>Course Registration</h2>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" id="name"></td>
+        </tr>
+
+        <tr>
+            <td>Course</td>
+            <td><input type="text" id="course"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button onclick="showMessage()">
+                    Submit
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        function showMessage() {
+
+            let name = document.getElementById("name").value;
+            let course = document.getElementById("course").value;
+
+            let message =
+                "Hello " + name +
+                ", Welcome to " +
+                course + " Course";
+
+            // Screen Output
+            document.getElementById("result").innerHTML =
+                message;
+
+            // Console Output
+            console.log(message);
+
+            // Console Table
+            console.table({
+                Name: name,
+                Course: course,
+                Message: message
+            });
+        }
+
+    </script>
+
+</body>
+</html>

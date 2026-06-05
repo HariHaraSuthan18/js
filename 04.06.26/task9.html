@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Bio Data</title>
+</head>
+<body>
+
+    <h2>Mini Bio Data</h2>
+
+    <button onclick="showBio()">
+        Show Bio Data
+    </button>
+
+    <br><br>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        function showBio() {
+
+            let name = "Suthan";
+            let age = 21;
+            let phone = "9876543210";
+            let email = "suthan@gmail.com";
+
+            // Screen Output
+            document.getElementById("result").innerHTML =
+                "Name : " + name + "<br>" +
+                "Age : " + age + "<br>" +
+                "Phone : " + phone + "<br>" +
+                "Email : " + email;
+
+            // Console Output
+            console.log("Name : " + name);
+            console.log("Age : " + age);
+            console.log("Phone : " + phone);
+            console.log("Email : " + email);
+
+            // Console Table
+            console.table({
+                Name: name,
+                Age: age,
+                Phone: phone,
+                Email: email
+            });
+        }
+
+    </script>
+
+</body>
+</html>

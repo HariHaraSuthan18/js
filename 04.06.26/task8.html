@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favorite Things</title>
+</head>
+<body>
+
+    <h2>Favorite Things</h2>
+
+    <button onclick="showFavorites()">
+        Show Favorites
+    </button>
+
+    <br><br>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        function showFavorites() {
+
+            let favoriteFood = "dosa";
+            let favoriteColor = "Red";
+            let favoriteMovie = "96";
+
+            // Screen Output
+            document.getElementById("result").innerHTML =
+                "Food : " + favoriteFood + "<br>" +
+                "Color : " + favoriteColor + "<br>" +
+                "Movie : " + favoriteMovie;
+
+            // Console Output
+            console.log("Food : " + favoriteFood);
+            console.log("Color : " + favoriteColor);
+            console.log("Movie : " + favoriteMovie);
+
+            // Console Table
+            console.table({
+                Food: favoriteFood,
+                Color: favoriteColor,
+                Movie: favoriteMovie
+            });
+        }
+
+    </script>
+
+</body>
+</html>

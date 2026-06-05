@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variable Practice</title>
+</head>
+<body>
+
+    <h2>Student Details</h2>
+
+    <button onclick="showData()">
+        Show Details
+    </button>
+
+    <br><br>
+
+    <h3 id="result"></h3>
+
+    <script>
+
+        function showData() {
+
+            let studentName = "Suthan";
+            let studentAge = 21;
+            let studentCourse = "Computer Applications";
+
+            // Screen Output
+            document.getElementById("result").innerHTML =
+                "Name : " + studentName + "<br>" +
+                "Age : " + studentAge + "<br>" +
+                "Course : " + studentCourse;
+
+            // Console Output
+            console.log(studentName);
+            console.log(studentAge);
+            console.log(studentCourse);
+
+            // Console Table
+            console.table({
+                Name: studentName,
+                Age: studentAge,
+                Course: studentCourse
+            });
+        }
+
+    </script>
+
+</body>
+</html>
