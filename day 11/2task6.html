@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Fine Checker</title>
+</head>
+<body>
+
+    <h2>Traffic Fine Checker</h2>
+
+    <input type="text" id="helmet" placeholder="Helmet (yes/no)">
+    <br><br>
+
+    <input type="text" id="license" placeholder="License (yes/no)">
+    <br><br>
+
+    <button onclick="checkFine()">Check Fine</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function checkFine() {
+
+            let helmet = document.getElementById("helmet").value.toLowerCase();
+            let license = document.getElementById("license").value.toLowerCase();
+
+            let fine = 0;
+
+            if (helmet == "no" && license == "no") {
+                fine = 3000;
+            }
+            else if (helmet == "no") {
+                fine = 1000;
+            }
+            else if (license == "no") {
+                fine = 2000;
+            }
+
+            document.getElementById("result").innerHTML =
+                "Fine Amount : ₹" + fine;
+        }
+    </script>
+
+</body>
+</html>

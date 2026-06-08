@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Student Grade System</h2>
+
+        <input type="number" id="marks" placeholder="Enter Marks">
+
+        <br>
+
+        <button onclick="checkGrade()">
+            Check Grade
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function checkGrade() {
+
+            let marks = Number(document.getElementById("marks").value);
+
+            let grade;
+
+            if (marks >= 90 && marks <= 100) {
+                grade = "A+";
+            }
+            else if (marks >= 80) {
+                grade = "A";
+            }
+            else if (marks >= 70) {
+                grade = "B";
+            }
+            else if (marks >= 60) {
+                grade = "C";
+            }
+            else {
+                grade = "Fail";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Marks : " + marks + "<br>" +
+                "Grade : " + grade;
+
+            console.log("Marks :", marks);
+            console.log("Grade :", grade);
+
+            console.table({
+                Marks: marks,
+                Grade: grade
+            });
+        }
+
+    </script>
+
+</body>
+</html>

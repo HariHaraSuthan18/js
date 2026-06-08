@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Employee Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 500px;
+            margin: 80px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Mini Employee Management System</h2>
+
+    <input type="text" id="name1" placeholder="Employee 1 Name">
+    <input type="number" id="salary1" placeholder="Employee 1 Salary">
+
+    <input type="text" id="name2" placeholder="Employee 2 Name">
+    <input type="number" id="salary2" placeholder="Employee 2 Salary">
+
+    <input type="text" id="name3" placeholder="Employee 3 Name">
+    <input type="number" id="salary3" placeholder="Employee 3 Salary">
+
+    <br>
+
+    <button onclick="manageEmployees()">
+        Show Report
+    </button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+function manageEmployees() {
+
+    let employees = [
+
+        {
+            id: 1,
+            name: document.getElementById("name1").value,
+            salary: Number(document.getElementById("salary1").value)
+        },
+
+        {
+            id: 2,
+            name: document.getElementById("name2").value,
+            salary: Number(document.getElementById("salary2").value)
+        },
+
+        {
+            id: 3,
+            name: document.getElementById("name3").value,
+            salary: Number(document.getElementById("salary3").value)
+        }
+    ];
+
+    let highest = employees[0];
+    let lowest = employees[0];
+    let totalSalary = 0;
+
+    let output = "<h3>Employee Details</h3>";
+
+    for(let i = 0; i < employees.length; i++) {
+
+        output +=
+        "ID : " + employees[i].id +
+        ", Name : " + employees[i].name +
+        ", Salary : ₹" + employees[i].salary +
+        "<br>";
+
+        totalSalary += employees[i].salary;
+
+        if(employees[i].salary > highest.salary) {
+            highest = employees[i];
+        }
+
+        if(employees[i].salary < lowest.salary) {
+            lowest = employees[i];
+        }
+    }
+
+    output += "<hr>";
+    output += "Highest Salary : " + highest.name + " (₹" + highest.salary + ")<br>";
+    output += "Lowest Salary : " + lowest.name + " (₹" + lowest.salary + ")<br>";
+    output += "Total Employees : " + employees.length + "<br>";
+    output += "Total Salary Expenditure : ₹" + totalSalary;
+
+    document.getElementById("result").innerHTML = output;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Discount System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>E-Commerce Discount System</h2>
+
+        <input type="number" id="amount" placeholder="Enter Purchase Amount">
+
+        <br>
+
+        <button onclick="calculateDiscount()">
+            Calculate Discount
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function calculateDiscount() {
+
+            let amount = Number(document.getElementById("amount").value);
+
+            let discountPercent = 0;
+
+            if (amount >= 10000) {
+                discountPercent = 20;
+            }
+            else if (amount >= 5000) {
+                discountPercent = 10;
+            }
+            else if (amount >= 2000) {
+                discountPercent = 5;
+            }
+            else {
+                discountPercent = 0;
+            }
+
+            let discount = amount * discountPercent / 100;
+            let finalAmount = amount - discount;
+
+            document.getElementById("result").innerHTML =
+                "Original Amount : " + amount + "<br>" +
+                "Discount : " + discount + "<br>" +
+                "Final Amount : " + finalAmount;
+
+            console.log("Original Amount :", amount);
+            console.log("Discount :", discount);
+            console.log("Final Amount :", finalAmount);
+
+            console.table({
+                OriginalAmount: amount,
+                Discount: discount,
+                FinalAmount: finalAmount
+            });
+        }
+
+    </script>
+
+</body>
+</html>

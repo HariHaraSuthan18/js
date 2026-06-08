@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Authentication System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Login Authentication System</h2>
+
+        <input type="text" id="username" placeholder="Enter Username">
+
+        <input type="password" id="password" placeholder="Enter Password">
+
+        <br>
+
+        <button onclick="checkLogin()">
+            Login
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function checkLogin() {
+
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if (username == "admin") {
+
+                if (password == "12345") {
+                    document.getElementById("result").innerHTML = "Login Success";
+                }
+                else {
+                    document.getElementById("result").innerHTML = "Invalid Password";
+                }
+
+            }
+            else {
+                document.getElementById("result").innerHTML = "Invalid Username";
+            }
+
+            console.log("Username :", username);
+            console.log("Password :", password);
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATM Withdrawal Machine</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>ATM Withdrawal Machine</h2>
+
+        <input type="number" id="amount" placeholder="Enter Withdrawal Amount">
+
+        <br>
+
+        <button onclick="withdrawMoney()">
+            Withdraw
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function withdrawMoney() {
+
+            let balance = 5000;
+            let amount = Number(document.getElementById("amount").value);
+
+            if (amount > balance) {
+
+                document.getElementById("result").innerHTML =
+                    "Insufficient Balance<br>" +
+                    "Available Balance : " + balance;
+
+            }
+            else {
+
+                let remainingBalance = balance - amount;
+
+                document.getElementById("result").innerHTML =
+                    "Withdrawal Success<br>" +
+                    "Remaining Balance : " + remainingBalance;
+            }
+
+            console.log("Balance :", balance);
+            console.log("Withdrawal Amount :", amount);
+        }
+
+    </script>
+
+</body>
+</html>

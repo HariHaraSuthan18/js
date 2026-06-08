@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Salary Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Employee Salary Calculator</h2>
+
+        <input type="number" id="salary" placeholder="Enter Basic Salary">
+
+        <br>
+
+        <button onclick="calculateSalary()">
+            Calculate Salary
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function calculateSalary() {
+
+            let basicSalary = Number(document.getElementById("salary").value);
+
+            let hra = basicSalary * 0.20;
+            let bonus = basicSalary * 0.10;
+
+            let totalSalary = basicSalary + hra + bonus;
+
+            let tax = totalSalary * 0.05;
+
+            let finalSalary = totalSalary - tax;
+
+            document.getElementById("result").innerHTML =
+                "Basic Salary : " + basicSalary + "<br>" +
+                "HRA : " + hra + "<br>" +
+                "Bonus : " + bonus + "<br>" +
+                "Tax : " + tax + "<br>" +
+                "Final Salary : " + finalSalary;
+
+            console.log("Basic Salary :", basicSalary);
+            console.log("HRA :", hra);
+            console.log("Bonus :", bonus);
+            console.log("Tax :", tax);
+            console.log("Final Salary :", finalSalary);
+        }
+
+    </script>
+
+</body>
+</html>

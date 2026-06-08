@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Attendance Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f2f5;
+        }
+
+        .card {
+            width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Employee Attendance Tracker</h2>
+
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Status (P/A)</th>
+        </tr>
+        <tr>
+            <td>01-06-2026</td>
+            <td><input type="text" id="d1"></td>
+        </tr>
+        <tr>
+            <td>02-06-2026</td>
+            <td><input type="text" id="d2"></td>
+        </tr>
+        <tr>
+            <td>03-06-2026</td>
+            <td><input type="text" id="d3"></td>
+        </tr>
+        <tr>
+            <td>04-06-2026</td>
+            <td><input type="text" id="d4"></td>
+        </tr>
+        <tr>
+            <td>05-06-2026</td>
+            <td><input type="text" id="d5"></td>
+        </tr>
+        <tr>
+            <td>06-06-2026</td>
+            <td><input type="text" id="d6"></td>
+        </tr>
+        <tr>
+            <td>07-06-2026</td>
+            <td><input type="text" id="d7"></td>
+        </tr>
+    </table>
+
+    <button onclick="checkAttendance()">
+        Check Attendance
+    </button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+function checkAttendance() {
+
+    let attendance = [
+        document.getElementById("d1").value,
+        document.getElementById("d2").value,
+        document.getElementById("d3").value,
+        document.getElementById("d4").value,
+        document.getElementById("d5").value,
+        document.getElementById("d6").value,
+        document.getElementById("d7").value
+    ];
+
+    let present = 0;
+    let absent = 0;
+
+    for(let i = 0; i < attendance.length; i++) {
+
+        if(attendance[i].toUpperCase() == "P") {
+            present++;
+        }
+        else if(attendance[i].toUpperCase() == "A") {
+            absent++;
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+        "Present Days : " + present + "<br>" +
+        "Absent Days : " + absent;
+}
+
+</script>
+
+</body>
+</html>

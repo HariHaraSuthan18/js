@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Inventory Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            text-align: center;
+        }
+
+        .card {
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <h2>Product Inventory Management</h2>
+
+        <input type="text" id="productName" placeholder="Enter Product Name">
+
+        <input type="number" id="price" placeholder="Enter Price">
+
+        <input type="number" id="stock" placeholder="Enter Stock">
+
+        <br>
+
+        <button onclick="showProduct()">
+            Show Details
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function showProduct() {
+
+            let product = {
+                productName : document.getElementById("productName").value,
+                price : document.getElementById("price").value,
+                stock : document.getElementById("stock").value
+            };
+
+            let output = "";
+
+            for(let key in product) {
+                output += key + " : " + product[key] + "<br>";
+            }
+
+            document.getElementById("result").innerHTML = output;
+
+            console.log(product);
+        }
+
+    </script>
+
+</body>
+</html>
