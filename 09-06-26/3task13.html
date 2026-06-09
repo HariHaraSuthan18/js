@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Shift Finder</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f2f7ff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:8px;
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#6f42c1;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#5a32a3;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Employee Shift Finder</h2>
+
+    <input type="number" id="time" placeholder="Enter Time (0-23)">
+
+    <button onclick="findShift()">Find Shift</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function findShift(){
+
+    let time = Number(document.getElementById("time").value);
+    let shift;
+
+    if(time >= 6 && time < 14){
+        shift = "Morning Shift";
+    }
+    else if(time >= 14 && time < 22){
+        shift = "Afternoon Shift";
+    }
+    else if((time >= 22 && time <= 23) || (time >= 0 && time < 6)){
+        shift = "Night Shift";
+    }
+    else{
+        shift = "Invalid Time";
+    }
+
+    document.getElementById("result").innerHTML = shift;
+}
+</script>
+
+</body>
+</html>

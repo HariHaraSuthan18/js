@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Category Finder</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#e8f0fe;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:#fff;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            color:#333;
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #dcdcdc;
+            border-radius:8px;
+            font-size:16px;
+            margin-bottom:15px;
+        }
+
+        input:focus{
+            outline:none;
+            border-color:#4a90e2;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#4a90e2;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#357abd;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:20px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Age Category Finder</h2>
+
+    <input type="number" id="age" placeholder="Enter Age">
+
+    <button onclick="checkAge()">Check Category</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function checkAge(){
+
+    let age = document.getElementById("age").value;
+    let result = "";
+
+    if(age >= 0 && age <= 12){
+        result = "Child";
+    }
+    else if(age >= 13 && age <= 19){
+        result = "Teenager";
+    }
+    else if(age >= 20 && age <= 59){
+        result = "Adult";
+    }
+    else if(age >= 60){
+        result = "Senior Citizen";
+    }
+    else{
+        result = "Invalid Age";
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Table Generator</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            padding:10px 20px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        #result{
+            margin-top:20px;
+            text-align:left;
+        }
+
+        .row{
+            padding:8px;
+            margin:5px 0;
+            background:#f1f1f1;
+            border-radius:5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Multiplication Table</h2>
+
+    <input type="number" id="num" placeholder="Enter Number">
+
+    <button onclick="generateTable()">Generate Table</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function generateTable(){
+
+    let num = document.getElementById("num").value;
+    let output = "";
+
+    for(let i = 1; i <= 10; i++){
+
+        output += "<div class='row'>" +
+                  num + " × " + i + " = " + (num * i) +
+                  "</div>";
+    }
+
+    document.getElementById("result").innerHTML = output;
+}
+</script>
+
+</body>
+</html>

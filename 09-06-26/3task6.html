@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile Recharge Offer</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f0f8ff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:8px;
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#ff6b35;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#e85a2a;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Mobile Recharge Offer</h2>
+
+    <input type="number" id="amount" placeholder="Enter Recharge Amount">
+
+    <button onclick="checkOffer()">Check Offer</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function checkOffer(){
+
+    let amount = Number(document.getElementById("amount").value);
+    let offer = "";
+
+    if(amount >= 499){
+        offer = "Netflix Offer";
+    }
+    else if(amount >= 299){
+        offer = "2GB Extra Data";
+    }
+    else{
+        offer = "No Offer";
+    }
+
+    document.getElementById("result").innerHTML =
+    "Offer: " + offer;
+}
+</script>
+
+</body>
+</html>

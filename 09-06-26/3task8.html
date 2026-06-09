@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Attendance</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#eef5ff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:8px;
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Employee Attendance</h2>
+
+    <input type="number" id="workingDays" placeholder="Enter Working Days">
+
+    <input type="number" id="presentDays" placeholder="Enter Present Days">
+
+    <button onclick="checkAttendance()">Check Attendance</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function checkAttendance(){
+
+    let workingDays = Number(document.getElementById("workingDays").value);
+    let presentDays = Number(document.getElementById("presentDays").value);
+
+    let percentage = (presentDays / workingDays) * 100;
+
+    if(percentage >= 75){
+        document.getElementById("result").innerHTML =
+        "Attendance: " + percentage.toFixed(2) + "%<br>Eligible";
+    }
+    else{
+        document.getElementById("result").innerHTML =
+        "Attendance: " + percentage.toFixed(2) + "%<br>Not Eligible";
+    }
+}
+</script>
+
+</body>
+</html>

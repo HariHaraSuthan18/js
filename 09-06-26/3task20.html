@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Selection System</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:380px;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+        }
+
+        input, select{
+            width:90%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            padding:10px 20px;
+            background:#28a745;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#218838;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Interview Selection System</h2>
+
+    <select id="degree">
+        <option value="">Degree Completed?</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+
+    <select id="communication">
+        <option value="">Communication Skill</option>
+        <option value="good">Good</option>
+        <option value="poor">Poor</option>
+    </select>
+
+    <input type="number" id="score" placeholder="Technical Score">
+
+    <button onclick="checkSelection()">Check Selection</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function checkSelection(){
+
+    let degree = document.getElementById("degree").value;
+    let communication = document.getElementById("communication").value;
+    let score = Number(document.getElementById("score").value);
+
+    if(degree == "yes"){
+
+        if(communication == "good"){
+
+            if(score >= 70){
+
+                document.getElementById("result").innerHTML =
+                "Selected for Interview";
+
+            }
+            else{
+
+                document.getElementById("result").innerHTML =
+                "Rejected: Technical Score should be 70 or above";
+
+            }
+
+        }
+        else{
+
+            document.getElementById("result").innerHTML =
+            "Rejected: Communication Skill is not Good";
+
+        }
+
+    }
+    else{
+
+        document.getElementById("result").innerHTML =
+        "Rejected: Degree Not Completed";
+
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Salary Hike Calculator</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#e8f5e9;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:8px;
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#28a745;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#218838;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Salary Hike Calculator</h2>
+
+    <input type="number" id="salary" placeholder="Enter Salary">
+
+    <button onclick="calculateHike()">Calculate Hike</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculateHike(){
+
+    let salary = Number(document.getElementById("salary").value);
+    let hike = 0;
+
+    if(salary < 20000){
+        hike = salary * 0.20;
+    }
+    else if(salary <= 50000){
+        hike = salary * 0.10;
+    }
+    else{
+        hike = salary * 0.05;
+    }
+
+    let finalSalary = salary + hike;
+
+    document.getElementById("result").innerHTML =
+        "Hike: ₹" + hike + "<br>" +
+        "Final Salary: ₹" + finalSalary;
+}
+</script>
+
+</body>
+</html>

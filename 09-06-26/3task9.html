@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Ticket Booking</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f0f8ff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:8px;
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#ff5722;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#e64a19;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Bus Ticket Booking</h2>
+
+    <input type="number" id="tickets" placeholder="Enter Number of Tickets">
+
+    <button onclick="bookTicket()">Book Ticket</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function bookTicket(){
+
+    let ticketPrice = 500;
+    let tickets = Number(document.getElementById("tickets").value);
+
+    let totalAmount = tickets * ticketPrice;
+    let gst = totalAmount * 0.05;
+    let finalAmount = totalAmount + gst;
+
+    document.getElementById("result").innerHTML =
+        "Total Amount: ₹" + totalAmount + "<br>" +
+        "GST (5%): ₹" + gst + "<br>" +
+        "Final Amount: ₹" + finalAmount;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electricity Bill Calculator</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#eef7ff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:8px;
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Electricity Bill Calculator</h2>
+
+    <input type="number" id="units" placeholder="Enter Units Consumed">
+
+    <button onclick="calculateBill()">Calculate Bill</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculateBill(){
+
+    let units = Number(document.getElementById("units").value);
+    let rate;
+
+    if(units <= 100){
+        rate = 5;
+    }
+    else if(units <= 200){
+        rate = 7;
+    }
+    else{
+        rate = 10;
+    }
+
+    let bill = units * rate;
+
+    document.getElementById("result").innerHTML =
+        "Rate: ₹" + rate + " per unit<br>" +
+        "Total Bill: ₹" + bill;
+}
+</script>
+
+</body>
+</html>

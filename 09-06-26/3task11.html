@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Police Recruitment</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#eef2f3;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            border:2px solid #ddd;
+            border-radius:8px;
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#1976d2;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#1565c0;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Police Recruitment</h2>
+
+    <input type="number" id="age" placeholder="Enter Age">
+
+    <input type="number" id="height" placeholder="Enter Height (cm)">
+
+    <input type="number" id="weight" placeholder="Enter Weight (kg)">
+
+    <button onclick="checkEligibility()">Check Eligibility</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function checkEligibility(){
+
+    let age = Number(document.getElementById("age").value);
+    let height = Number(document.getElementById("height").value);
+    let weight = Number(document.getElementById("weight").value);
+
+    if(age >= 18){
+
+        if(height >= 160){
+
+            if(weight >= 55){
+                document.getElementById("result").innerHTML =
+                "Eligible for Recruitment";
+            }
+            else{
+                document.getElementById("result").innerHTML =
+                "Rejected: Weight should be at least 55 kg";
+            }
+
+        }
+        else{
+            document.getElementById("result").innerHTML =
+            "Rejected: Height should be at least 160 cm";
+        }
+
+    }
+    else{
+        document.getElementById("result").innerHTML =
+        "Rejected: Age should be at least 18";
+    }
+}
+</script>
+
+</body>
+</html>

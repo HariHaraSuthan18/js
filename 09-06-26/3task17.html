@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Checker</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            padding:10px 20px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:20px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Password Checker</h2>
+
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <button onclick="checkPassword()">Check Strength</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function checkPassword(){
+
+    let password = document.getElementById("password").value;
+    let length = password.length;
+    let strength;
+
+    if(length < 6){
+        strength = "Weak";
+    }
+    else if(length <= 10){
+        strength = "Medium";
+    }
+    else{
+        strength = "Strong";
+    }
+
+    document.getElementById("result").innerHTML =
+    "Password Strength: " + strength;
+}
+</script>
+
+</body>
+</html>

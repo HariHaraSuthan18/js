@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown Timer</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:#f4f4f4;
+        }
+
+        .container{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            text-align:center;
+            box-shadow:0 0 10px gray;
+        }
+
+        #result{
+            font-size:40px;
+            font-weight:bold;
+            margin-top:20px;
+        }
+
+        button{
+            padding:10px 20px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Countdown Timer</h2>
+
+    <button onclick="startCountdown()">Start Countdown</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+
+function startCountdown(){
+
+    let count = 10;
+
+    let timer = setInterval(function(){
+
+        document.getElementById("result").innerHTML = count;
+
+        count--;
+
+        if(count < 0){
+            clearInterval(timer);
+            document.getElementById("result").innerHTML =
+            "Happy New Year";
+        }
+
+    },1000);
+
+}
+
+</script>
+
+</body>
+</html>

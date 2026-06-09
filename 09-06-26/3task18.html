@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company Bonus System</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+            text-align:center;
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            padding:10px 20px;
+            background:#28a745;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#218838;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Company Bonus System</h2>
+
+    <input type="number" id="salary" placeholder="Enter Salary">
+
+    <input type="number" id="experience" placeholder="Enter Experience (Years)">
+
+    <button onclick="calculateBonus()">Calculate Bonus</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculateBonus(){
+
+    let salary = Number(document.getElementById("salary").value);
+    let experience = Number(document.getElementById("experience").value);
+
+    let bonusPercentage;
+    let bonus;
+
+    if(experience <= 2){
+        bonusPercentage = 5;
+    }
+    else if(experience <= 5){
+        bonusPercentage = 10;
+    }
+    else{
+        bonusPercentage = 20;
+    }
+
+    bonus = salary * bonusPercentage / 100;
+
+    document.getElementById("result").innerHTML =
+        "Bonus Percentage: " + bonusPercentage + "%<br>" +
+        "Bonus Amount: ₹" + bonus;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cab Fare Calculator</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f5f7fa;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            background:white;
+            width:350px;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-bottom:15px;
+            border:2px solid #ddd;
+            border-radius:8px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#ff9800;
+            color:white;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#f57c00;
+        }
+
+        #result{
+            margin-top:20px;
+            font-size:18px;
+            font-weight:bold;
+            color:#222;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Cab Fare Calculator</h2>
+
+    <input type="number" id="distance" placeholder="Enter Distance (KM)">
+
+    <button onclick="calculateFare()">Calculate Fare</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+function calculateFare(){
+
+    let distance = Number(document.getElementById("distance").value);
+    let fare;
+
+    if(distance <= 5){
+        fare = distance * 20;
+    }
+    else{
+        fare = (5 * 20) + ((distance - 5) * 15);
+    }
+
+    document.getElementById("result").innerHTML =
+    "Total Fare: ₹" + fare;
+}
+</script>
+
+</body>
+</html>
