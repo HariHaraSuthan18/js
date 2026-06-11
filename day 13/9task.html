@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bus Reservation System</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#fff3e6;
+    text-align:center;
+}
+
+.container{
+    width:550px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px gray;
+}
+
+.passenger{
+    background:#ffe6cc;
+    padding:10px;
+    margin:8px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.passenger:hover{
+    background:#ffd1a3;
+}
+
+.card{
+    margin-top:20px;
+    background:#fff8f0;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+}
+
+button{
+    padding:10px;
+    background:#ff6600;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#cc5200;
+}
+
+#msg{
+    margin-top:15px;
+    font-weight:bold;
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🚌 Bus Reservation System</h2>
+
+<h3>Passengers</h3>
+<div id="passengerList"></div>
+
+<h3>Total Collection</h3>
+<p id="totalCollection"></p>
+
+<h3>Occupied Seats</h3>
+<p id="seats"></p>
+
+<div class="card" id="card">
+    <h3 id="name"></h3>
+    <p id="seat"></p>
+    <p id="price"></p>
+    <p id="busType"></p>
+
+    <button onclick="confirmTicket()">Confirm Ticket</button>
+</div>
+
+<div id="msg"></div>
+
+</div>
+
+<script>
+
+// 1. Passenger array
+const passengers = [
+    { passengerId: 1, name: "akashya", seatNumber: 5, ticketPrice: 500, busType: "AC" },
+    { passengerId: 2, name: "sri", seatNumber: 12, ticketPrice: 300, busType: "Non-AC" },
+    { passengerId: 3, name: "vishnu", seatNumber: 7, ticketPrice: 500, busType: "AC" },
+    { passengerId: 4, name: "antony", seatNumber: 18, ticketPrice: 250, busType: "Ordinary" },
+    { passengerId: 5, name: "krishna", seatNumber: 3, ticketPrice: 500, busType: "AC" }
+];
+
+let selectedPassenger = null;
+
+// 2. Display passenger names
+let list = document.getElementById("passengerList");
+
+passengers.forEach((p, index)=>{
+    list.innerHTML += `
+        <div class="passenger" onclick="selectPassenger(${index})">
+            👤 ${p.name}
+        </div>
+    `;
+});
+
+// 3. Total collection
+let total = passengers.reduce((sum,p)=>sum + p.ticketPrice,0);
+document.getElementById("totalCollection").innerText = "₹ " + total;
+
+// 4. Occupied seats
+let seats = passengers.map(p => p.seatNumber);
+document.getElementById("seats").innerText = seats.join(", ");
+
+// 5. Select passenger
+function selectPassenger(index){
+
+    selectedPassenger = passengers[index];
+
+    document.getElementById("card").style.display = "block";
+
+    document.getElementById("name").innerText =
+        "Name: " + selectedPassenger.name;
+
+    document.getElementById("seat").innerText =
+        "Seat No: " + selectedPassenger.seatNumber;
+
+    document.getElementById("price").innerText =
+        "Ticket: ₹" + selectedPassenger.ticketPrice;
+
+    document.getElementById("busType").innerText =
+        "Bus Type: " + getBusType(selectedPassenger.busType);
+
+    document.getElementById("msg").innerText = "";
+}
+
+// 6. Switch statement (bus type)
+function getBusType(type){
+
+    switch(type){
+        case "AC":
+            return "AC Bus ❄️";
+        case "Non-AC":
+            return "Non-AC Bus 🚌";
+        case "Ordinary":
+            return "Ordinary Bus 🚍";
+        default:
+            return "Unknown";
+    }
+}
+
+// 7. Callback ticket confirmation
+function confirmTicket(){
+    processTicket(selectedPassenger, showMessage);
+}
+
+function processTicket(passenger, callback){
+    callback(passenger);
+}
+
+function showMessage(passenger){
+    document.getElementById("msg").innerText =
+    "🎟️ Ticket Confirmed for " + passenger.name + " (Seat " + passenger.seatNumber + ")";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>College Admission System</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f3f7ff;
+    text-align:center;
+}
+
+.container{
+    width:550px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px gray;
+}
+
+.applicant{
+    background:#eef3ff;
+    padding:10px;
+    margin:8px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.applicant:hover{
+    background:#d9e4ff;
+}
+
+.card{
+    margin-top:20px;
+    background:#f0f6ff;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+}
+
+button{
+    padding:10px;
+    background:#1e66ff;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#004bd6;
+}
+
+#msg{
+    margin-top:15px;
+    font-weight:bold;
+    color:green;
+}
+.low{
+    color:red;
+}
+.good{
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🎓 College Admission System</h2>
+
+<h3>Applicants</h3>
+<div id="applicantList"></div>
+
+<h3>Total Eligible Students</h3>
+<p id="eligibleCount"></p>
+
+<div class="card" id="card">
+    <h3 id="name"></h3>
+    <p id="age"></p>
+    <p id="percentage"></p>
+    <p id="department"></p>
+    <p id="eligibility"></p>
+
+    <button onclick="generateResult()">Generate Admission Result</button>
+</div>
+
+<div id="msg"></div>
+
+</div>
+
+<script>
+
+// 1. Applicants array
+const applicants = [
+    { name: "Arun", age: 19, percentage: 75, department: "CSE" },
+    { name: "Meena", age: 17, percentage: 80, department: "ECE" },
+    { name: "Kumar", age: 20, percentage: 55, department: "MECH" },
+    { name: "Divya", age: 21, percentage: 85, department: "CIVIL" },
+    { name: "Rahul", age: 18, percentage: 60, department: "CSE" }
+];
+
+let selectedApplicant = null;
+
+// 2. Display names
+let list = document.getElementById("applicantList");
+
+applicants.forEach((a, index)=>{
+    list.innerHTML += `
+        <div class="applicant" onclick="selectApplicant(${index})">
+            👤 ${a.name}
+        </div>
+    `;
+});
+
+// 3. Check eligibility
+function isEligible(app){
+    return app.age >= 18 && app.percentage >= 60;
+}
+
+// 4. Count eligible students
+let eligibleCount = applicants.filter(isEligible).length;
+document.getElementById("eligibleCount").innerText = eligibleCount;
+
+// 5. Select applicant
+function selectApplicant(index){
+
+    selectedApplicant = applicants[index];
+
+    document.getElementById("card").style.display = "block";
+
+    document.getElementById("name").innerText =
+        "Name: " + selectedApplicant.name;
+
+    document.getElementById("age").innerText =
+        "Age: " + selectedApplicant.age;
+
+    document.getElementById("percentage").innerText =
+        "Percentage: " + selectedApplicant.percentage;
+
+    document.getElementById("department").innerText =
+        "Department: " + getDepartment(selectedApplicant.department);
+
+    document.getElementById("eligibility").innerText =
+        isEligible(selectedApplicant)
+        ? "Eligible ✅"
+        : "Not Eligible ❌";
+
+    document.getElementById("msg").innerText = "";
+}
+
+// 6. Switch statement (department)
+function getDepartment(dept){
+
+    switch(dept){
+        case "CSE":
+            return "Computer Science 💻";
+        case "ECE":
+            return "Electronics ⚡";
+        case "MECH":
+            return "Mechanical ⚙️";
+        case "CIVIL":
+            return "Civil 🏗️";
+        default:
+            return "Unknown";
+    }
+}
+
+// 7. Callback admission result
+function generateResult(){
+    processAdmission(selectedApplicant, showResult);
+}
+
+function processAdmission(applicant, callback){
+    callback(applicant);
+}
+
+function showResult(applicant){
+
+    if(isEligible(applicant)){
+        document.getElementById("msg").innerText =
+        "🎉 Admission Confirmed for " + applicant.name;
+    }
+    else{
+        document.getElementById("msg").innerText =
+        "❌ Admission Rejected for " + applicant.name;
+    }
+}
+
+</script>
+
+</body>
+</html>

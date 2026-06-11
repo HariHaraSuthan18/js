@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Movie Ticket Booking</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(to right, #141e30, #243b55);
+    color:white;
+    text-align:center;
+}
+
+.container{
+    width:500px;
+    margin:30px auto;
+    background:#ffffff10;
+    padding:20px;
+    border-radius:15px;
+}
+
+.movie{
+    background:#ffffff20;
+    padding:10px;
+    margin:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.movie:hover{
+    background:#ffffff40;
+}
+
+.card{
+    margin-top:20px;
+    background:#ffffff20;
+    padding:15px;
+    border-radius:12px;
+    display:none;
+}
+
+button{
+    padding:10px;
+    background:orange;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:darkorange;
+}
+
+#msg{
+    margin-top:15px;
+    font-weight:bold;
+    color:#00ff99;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🎬 Movie Ticket Booking System</h2>
+
+<h3>Movies</h3>
+<div id="movieList"></div>
+
+<h3>Total Available Seats</h3>
+<p id="totalSeats"></p>
+
+<div class="card" id="card">
+    <h3 id="name"></h3>
+    <p id="price"></p>
+    <p id="seats"></p>
+    <p id="language"></p>
+
+    <button onclick="bookTicket()">Book Ticket</button>
+</div>
+
+<div id="msg"></div>
+
+</div>
+
+<script>
+
+// 1. Movie Array
+const movies = [
+    { movieName: "Leo", ticketPrice: 250, availableSeats: 10, language: "Tamil" },
+    { movieName: "Jawan", ticketPrice: 300, availableSeats: 5, language: "Hindi" },
+    { movieName: "Avengers", ticketPrice: 400, availableSeats: 8, language: "English" },
+    { movieName: "KGF", ticketPrice: 280, availableSeats: 12, language: "Kannada" }
+];
+
+let selectedMovie = null;
+
+// 2. Display movie names (clickable)
+let list = document.getElementById("movieList");
+
+movies.forEach((m, index)=>{
+    list.innerHTML += `
+        <div class="movie" onclick="selectMovie(${index})">
+            🎥 ${m.movieName}
+        </div>
+    `;
+});
+
+// 3. Total seats
+let totalSeats = movies.reduce((sum,m)=>sum + m.availableSeats,0);
+document.getElementById("totalSeats").innerText = totalSeats;
+
+// 4. Select movie
+function selectMovie(index){
+
+    selectedMovie = movies[index];
+
+    document.getElementById("card").style.display = "block";
+
+    document.getElementById("name").innerText = "Movie: " + selectedMovie.movieName;
+    document.getElementById("price").innerText = "Ticket: ₹" + selectedMovie.ticketPrice;
+    document.getElementById("seats").innerText = "Seats: " + selectedMovie.availableSeats;
+    document.getElementById("language").innerText =
+        "Language: " + getLanguage(selectedMovie.language);
+
+    document.getElementById("msg").innerText = "";
+}
+
+// 5. Switch statement (language)
+function getLanguage(lang){
+
+    switch(lang){
+        case "Tamil":
+            return "Tamil Movie 🎯";
+        case "Hindi":
+            return "Hindi Movie 🎯";
+        case "English":
+            return "English Movie 🎯";
+        case "Kannada":
+            return "Kannada Movie 🎯";
+        default:
+            return "Unknown Language";
+    }
+}
+
+// 6. Booking with callback
+function bookTicket(){
+
+    if(selectedMovie.availableSeats > 0){
+        selectedMovie.availableSeats--;
+
+        confirmBooking(selectedMovie, bookingSuccess);
+    }
+    else{
+        document.getElementById("msg").innerText =
+        "❌ No seats available!";
+    }
+}
+
+function confirmBooking(movie, callback){
+    callback(movie);
+}
+
+function bookingSuccess(movie){
+    document.getElementById("msg").innerText =
+    "✅ Booking Confirmed! " + movie.movieName + " ticket booked successfully.";
+}
+
+</script>
+
+</body>
+</html>

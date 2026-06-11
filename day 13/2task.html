@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Payroll System</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+        margin-top: 50px;
+    }
+
+    input{
+        padding: 10px;
+        width: 250px;
+    }
+
+    button{
+        padding: 10px 15px;
+        background-color: blue;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .card{
+        width: 350px;
+        margin: 20px auto;
+        padding: 15px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px gray;
+    }
+</style>
+</head>
+<body>
+
+<h2>Employee Payroll System</h2>
+
+<input type="text" id="empName" placeholder="Enter Employee Name">
+<button onclick="searchEmployee()">Search</button>
+
+<div id="output"></div>
+
+<script>
+
+let employees = [
+    {id: 1, name: "aravinth", salary: 45000, department: "IT"},
+    {id: 2, name: "hari", salary: 28000, department: "HR"},
+    {id: 3, name: "sugumar", salary: 35000, department: "Finance"},
+    {id: 4, name: "sharma", salary: 50000, department: "IT"},
+    {id: 5, name: "abdul", salary: 25000, department: "Marketing"}
+];
+
+// Department Description using Switch
+function departmentDescription(dept){
+    switch(dept){
+        case "IT":
+            return "Handles software development";
+        case "HR":
+            return "Manages employees";
+        case "Finance":
+            return "Handles company accounts";
+        case "Marketing":
+            return "Promotes products and services";
+        default:
+            return "Unknown Department";
+    }
+}
+
+// Callback Function
+function generatePayrollReport(callback){
+    callback();
+}
+
+function searchEmployee(){
+
+    let name = document.getElementById("empName").value;
+    let output = "";
+
+    let employee = employees.find(
+        emp => emp.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if(employee){
+
+        generatePayrollReport(function(){
+
+            output = `
+            <div class="card">
+                <h3>${employee.name}</h3>
+                <p><b>ID:</b> ${employee.id}</p>
+                <p><b>Salary:</b> ₹${employee.salary}</p>
+                <p><b>Department:</b> ${employee.department}</p>
+                <p><b>Description:</b> ${departmentDescription(employee.department)}</p>
+            </div>
+            `;
+
+            document.getElementById("output").innerHTML = output;
+        });
+
+    } else {
+        document.getElementById("output").innerHTML =
+        "<h3 style='color:red'>Employee Not Found</h3>";
+    }
+}
+
+// Print all employee names
+console.log("Employee Names:");
+employees.forEach(emp => console.log(emp.name));
+
+// Total salary expense
+let totalSalary = employees.reduce((sum, emp) => sum + emp.salary, 0);
+console.log("Total Company Salary Expense: ₹" + totalSalary);
+
+// Employees earning above ₹30,000
+console.log("Employees earning above ₹30,000:");
+employees.filter(emp => emp.salary > 30000)
+         .forEach(emp => console.log(emp.name));
+
+</script>
+
+</body>
+</html>

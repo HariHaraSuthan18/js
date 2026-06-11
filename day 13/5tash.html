@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hospital Patient Records</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#e6f2ff;
+    text-align:center;
+}
+
+.container{
+    width:500px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px gray;
+}
+
+.patient{
+    background:#f0f8ff;
+    padding:10px;
+    margin:8px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.patient:hover{
+    background:#d6ebff;
+}
+
+.card{
+    margin-top:20px;
+    background:#eaf6ff;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+}
+
+button{
+    padding:10px;
+    background:#0077cc;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#005fa3;
+}
+
+#msg{
+    margin-top:15px;
+    font-weight:bold;
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🏥 Hospital Patient Records</h2>
+
+<h3>Patients</h3>
+<div id="patientList"></div>
+
+<h3>Total Patients</h3>
+<p id="totalPatients"></p>
+
+<h3>Patients Above Age 60</h3>
+<p id="above60"></p>
+
+<div class="card" id="card">
+    <h3 id="name"></h3>
+    <p id="age"></p>
+    <p id="disease"></p>
+    <p id="dept"></p>
+
+    <button onclick="bookAppointment()">Book Appointment</button>
+</div>
+
+<div id="msg"></div>
+
+</div>
+
+<script>
+
+// 1. Patient Array
+const patients = [
+    { patientId: 1, patientName: "Arun", age: 65, disease: "Heart" },
+    { patientId: 2, patientName: "Kumar", age: 45, disease: "Fever" },
+    { patientId: 3, patientName: "Meena", age: 70, disease: "Diabetes" },
+    { patientId: 4, patientName: "Rahul", age: 30, disease: "Ortho" },
+    { patientId: 5, patientName: "Divya", age: 55, disease: "Skin" }
+];
+
+let selectedPatient = null;
+
+// 2. Display all patient names
+let list = document.getElementById("patientList");
+
+patients.forEach((p, index)=>{
+    list.innerHTML += `
+        <div class="patient" onclick="selectPatient(${index})">
+            🧑 ${p.patientName}
+        </div>
+    `;
+});
+
+// 3. Count total patients
+document.getElementById("totalPatients").innerText =
+patients.length;
+
+// 4. Patients above age 60
+let above60 = patients.filter(p => p.age > 60)
+.map(p => p.patientName);
+
+document.getElementById("above60").innerText =
+above60.join(", ");
+
+// 5. Select patient
+function selectPatient(index){
+
+    selectedPatient = patients[index];
+
+    document.getElementById("card").style.display = "block";
+
+    document.getElementById("name").innerText =
+        "Name: " + selectedPatient.patientName;
+
+    document.getElementById("age").innerText =
+        "Age: " + selectedPatient.age;
+
+    document.getElementById("disease").innerText =
+        "Disease: " + selectedPatient.disease;
+
+    document.getElementById("dept").innerText =
+        "Department: " + getDepartment(selectedPatient.disease);
+
+    document.getElementById("msg").innerText = "";
+}
+
+// 6. Switch statement (disease department)
+function getDepartment(disease){
+
+    switch(disease){
+        case "Heart":
+            return "Cardiology 🫀";
+        case "Fever":
+            return "General Medicine 🤒";
+        case "Diabetes":
+            return "Endocrinology 🍬";
+        case "Ortho":
+            return "Orthopedics 🦴";
+        case "Skin":
+            return "Dermatology 🧴";
+        default:
+            return "General";
+    }
+}
+
+// 7. Callback appointment confirmation
+function bookAppointment(){
+
+    confirmAppointment(selectedPatient, showMessage);
+}
+
+function confirmAppointment(patient, callback){
+    callback(patient);
+}
+
+function showMessage(patient){
+    document.getElementById("msg").innerText =
+    "✅ Appointment confirmed for " + patient.patientName;
+}
+
+</script>
+
+</body>
+</html>

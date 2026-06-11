@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>E-Commerce Product Dashboard</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#eef6ff;
+    text-align:center;
+}
+
+.container{
+    width:550px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px gray;
+}
+
+.product{
+    background:#f0f8ff;
+    padding:10px;
+    margin:8px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.product:hover{
+    background:#d9ecff;
+}
+
+.card{
+    margin-top:20px;
+    background:#eaf4ff;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+}
+
+button{
+    padding:10px;
+    background:#0077cc;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#005fa3;
+}
+
+#msg{
+    margin-top:15px;
+    font-weight:bold;
+    color:green;
+}
+.low{
+    color:red;
+}
+.good{
+    color:green;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🛒 E-Commerce Product Dashboard</h2>
+
+<h3>Products</h3>
+<div id="productList"></div>
+
+<h3>Inventory Value</h3>
+<p id="inventory"></p>
+
+<h3>Low Stock (< 10)</h3>
+<p id="lowStock"></p>
+
+<div class="card" id="card">
+    <h3 id="name"></h3>
+    <p id="price"></p>
+    <p id="stock"></p>
+    <p id="status"></p>
+
+    <button onclick="generateReport()">Generate Report</button>
+</div>
+
+<div id="msg"></div>
+
+</div>
+
+<script>
+
+// 1. Product array
+const products = [
+    { productId: 1, productName: "Laptop", price: 50000, stock: 5 },
+    { productId: 2, productName: "Phone", price: 20000, stock: 15 },
+    { productId: 3, productName: "Headphones", price: 2000, stock: 8 },
+    { productId: 4, productName: "Mouse", price: 500, stock: 25 },
+    { productId: 5, productName: "Keyboard", price: 1500, stock: 3 }
+];
+
+let selectedProduct = null;
+
+// 2. Display all products
+let list = document.getElementById("productList");
+
+products.forEach((p, index)=>{
+    list.innerHTML += `
+        <div class="product" onclick="selectProduct(${index})">
+            💻 ${p.productName}
+        </div>
+    `;
+});
+
+// 3. Inventory value
+let inventory = products.reduce((sum,p)=>sum + (p.price * p.stock),0);
+document.getElementById("inventory").innerText = "₹ " + inventory;
+
+// 4. Low stock products
+let low = products.filter(p => p.stock < 10)
+.map(p => p.productName);
+
+document.getElementById("lowStock").innerText =
+low.join(", ");
+
+// 5. Select product
+function selectProduct(index){
+
+    selectedProduct = products[index];
+
+    document.getElementById("card").style.display = "block";
+
+    document.getElementById("name").innerText =
+        "Product: " + selectedProduct.productName;
+
+    document.getElementById("price").innerText =
+        "Price: ₹" + selectedProduct.price;
+
+    document.getElementById("stock").innerText =
+        "Stock: " + selectedProduct.stock;
+
+    document.getElementById("status").innerText =
+        "Status: " + stockStatus(selectedProduct.stock);
+
+    document.getElementById("msg").innerText = "";
+}
+
+// 6. Stock status
+function stockStatus(stock){
+    return stock < 10 ? "Low Stock ⚠️" : "In Stock ✅";
+}
+
+// 7. Callback report function
+function generateReport(){
+    createReport(selectedProduct, showReport);
+}
+
+function createReport(product, callback){
+    callback(product);
+}
+
+function showReport(product){
+    document.getElementById("msg").innerText =
+    "📊 Report Generated for " + product.productName +
+    " | Stock: " + product.stock;
+}
+
+</script>
+
+</body>
+</html>
