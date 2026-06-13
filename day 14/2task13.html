@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Database</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            width:450px;
+            background:white;
+            padding:25px;
+            border-radius:15px;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+            text-align:center;
+        }
+
+        button{
+            padding:10px 20px;
+            background:#4CAF50;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        .result{
+            margin-top:20px;
+            background:#f8f9fa;
+            padding:15px;
+            border-radius:10px;
+            text-align:left;
+        }
+
+        .employee{
+            background:#e9ecef;
+            padding:8px;
+            margin:5px 0;
+            border-radius:5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2> Employee Database</h2>
+
+    <button onclick="showEmployees()">Generate Report</button>
+
+    <div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+function showEmployees(){
+
+    let employees = [
+        {id:1, name:"Rahul", salary:25000},
+        {id:2, name:"Kavin", salary:30000},
+        {id:3, name:"John", salary:40000}
+    ];
+
+    let names = "";
+    let totalSalary = 0;
+    let highestSalaryEmployee = employees[0];
+
+    for(let i=0; i<employees.length; i++){
+
+        names += `<div class="employee">${employees[i].name}</div>`;
+
+        totalSalary += employees[i].salary;
+
+        if(employees[i].salary > highestSalaryEmployee.salary){
+            highestSalaryEmployee = employees[i];
+        }
+    }
+
+    document.getElementById("result").innerHTML = `
+        <h3> Employee Names</h3>
+        ${names}
+
+        <hr>
+
+        <p><b> Total Salary Expense:</b> ₹${totalSalary}</p>
+
+        <p><b> Highest Salary Employee:</b> 
+        ${highestSalaryEmployee.name} (₹${highestSalaryEmployee.salary})</p>
+    `;
+}
+
+</script>
+
+</body>
+</html>

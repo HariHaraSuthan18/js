@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Inventory System</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container{
+            background: white;
+            width: 400px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2{
+            color: #333;
+        }
+
+        input{
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button{
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover{
+            background: #218838;
+        }
+
+        .result{
+            margin-top: 20px;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .inventory-item{
+            background: #e9ecef;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .status{
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2> Food Inventory System</h2>
+
+    <input type="text" id="item1" placeholder="Enter Item 1">
+
+    <input type="text" id="item2" placeholder="Enter Item 2">
+
+    <button onclick="manageInventory()">Generate Report</button>
+
+    <div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+function manageInventory(){
+
+    let inventory = ["Rice","Oil","Sugar","Milk","Egg"];
+
+    let item1 = document.getElementById("item1").value;
+    let item2 = document.getElementById("item2").value;
+
+    inventory.push(item1);
+    inventory.push(item2);
+
+    inventory.shift(); // Remove first item
+    inventory.pop();   // Remove last item
+
+    let milkExists = inventory.includes("Milk");
+
+    let inventoryList = "";
+
+    for(let i = 0; i < inventory.length; i++){
+        inventoryList += `<div class="inventory-item">${inventory[i]}</div>`;
+    }
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("result").innerHTML = `
+        <h3> Inventory Report</h3>
+
+        <p class="status">
+            Milk Available: ${milkExists ? " Yes" : " No"}
+        </p>
+
+        <h4>Final Inventory</h4>
+
+        ${inventoryList}
+    `;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile Store Billing System</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            width:450px;
+            background:white;
+            padding:25px;
+            border-radius:15px;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        label{
+            display:block;
+            margin:10px 0;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            background:#28a745;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        .result{
+            margin-top:20px;
+            background:#f8f9fa;
+            padding:15px;
+            border-radius:10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2> Mobile Store Billing System</h2>
+
+    <label><input type="checkbox" id="mobile"> Mobile - ₹15000</label>
+
+    <label><input type="checkbox" id="laptop"> Laptop - ₹50000</label>
+
+    <label><input type="checkbox" id="headphone"> Headphone - ₹2000</label>
+
+    <label><input type="checkbox" id="smartwatch"> Smartwatch - ₹5000</label>
+
+    <button onclick="generateBill()">Generate Bill</button>
+
+    <div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+function generateBill(){
+
+    let products = {
+        Mobile: 15000,
+        Laptop: 50000,
+        Headphone: 2000,
+        Smartwatch: 5000
+    };
+
+    let selectedProducts = [];
+    let totalAmount = 0;
+
+    if(document.getElementById("mobile").checked){
+        selectedProducts.push("Mobile");
+        totalAmount += products.Mobile;
+    }
+
+    if(document.getElementById("laptop").checked){
+        selectedProducts.push("Laptop");
+        totalAmount += products.Laptop;
+    }
+
+    if(document.getElementById("headphone").checked){
+        selectedProducts.push("Headphone");
+        totalAmount += products.Headphone;
+    }
+
+    if(document.getElementById("smartwatch").checked){
+        selectedProducts.push("Smartwatch");
+        totalAmount += products.Smartwatch;
+    }
+
+    let gst = totalAmount * 0.18;
+    let finalBill = totalAmount + gst;
+
+    document.getElementById("result").innerHTML = `
+        <h3> Bill Details</h3>
+
+        <p><b>Selected Products:</b><br>
+        ${selectedProducts.join(", ") || "No Product Selected"}</p>
+
+        <p><b>Total Amount:</b> ₹${totalAmount}</p>
+
+        <p><b>GST (18%):</b> ₹${gst}</p>
+
+        <p><b>Final Bill:</b> ₹${finalBill}</p>
+    `;
+}
+
+</script>
+
+</body>
+</html>

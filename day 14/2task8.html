@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping Discount</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container{
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            color: #333;
+        }
+
+        input{
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        button{
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: darkgreen;
+        }
+
+        .result{
+            margin-top: 20px;
+            text-align: left;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2> Shopping Discount Calculator</h2>
+
+        <input type="number" id="amount" placeholder="Enter Purchase Amount">
+
+        <button onclick="calculateDiscount()">Calculate</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateDiscount(){
+
+            let purchaseAmount = Number(document.getElementById("amount").value);
+            let discount = 0;
+
+            if(purchaseAmount > 5000){
+                discount = purchaseAmount * 0.20;
+            }
+            else if(purchaseAmount > 3000){
+                discount = purchaseAmount * 0.10;
+            }
+            else if(purchaseAmount > 1000){
+                discount = purchaseAmount * 0.05;
+            }
+
+            let finalAmount = purchaseAmount - discount;
+
+            document.getElementById("result").innerHTML = `
+                <h3>Bill Details</h3>
+                <p> Original Amount: ₹${purchaseAmount}</p>
+                <p>Discount: ₹${discount}</p>
+                <p><b> Final Amount: ₹${finalAmount}</b></p>
+            `;
+        }
+    </script>
+
+</body>
+</html>

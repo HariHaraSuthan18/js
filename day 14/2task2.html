@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Admission System</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#667eea,#764ba2);
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .container{
+            width: 420px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        h2{
+            color: #444;
+        }
+
+        input{
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button{
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #218838;
+        }
+
+        #result{
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            display: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .approved{
+            background: linear-gradient(to right,#00b09b,#96c93d);
+        }
+
+        .rejected{
+            background: linear-gradient(to right,#ff416c,#ff4b2b);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2> College Admission System</h2>
+
+        <input type="text" id="name" placeholder="Enter Student Name">
+
+        <input type="number" id="age" placeholder="Enter Age">
+
+        <input type="number" id="percentage" placeholder="Enter 12th Percentage">
+
+        <br><br>
+
+        <button onclick="checkAdmission()">Check Admission</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkAdmission(){
+
+            let name = document.getElementById("name").value;
+            let age = Number(document.getElementById("age").value);
+            let percentage = Number(document.getElementById("percentage").value);
+
+            let result = document.getElementById("result");
+
+            if(age >= 17){
+
+                if(percentage >= 60){
+
+                    result.className = "approved";
+                    result.style.display = "block";
+
+                    result.innerHTML = `
+                        <h3> Admission Approved</h3>
+                        <p> Student: ${name}</p>
+                        <p> Age: ${age}</p>
+                        <p> Percentage: ${percentage}%</p>
+                    `;
+
+                }else{
+
+                    result.className = "rejected";
+                    result.style.display = "block";
+
+                    result.innerHTML = `
+                        <h3> Admission Rejected</h3>
+                        <p>Reason: Percentage below 60%</p>
+                    `;
+                }
+
+            }else{
+
+                result.className = "rejected";
+                result.style.display = "block";
+
+                result.innerHTML = `
+                    <h3> Admission Rejected</h3>
+                    <p>Reason: Age below 17 years</p>
+                `;
+            }
+        }
+    </script>
+
+</body>
+</html>

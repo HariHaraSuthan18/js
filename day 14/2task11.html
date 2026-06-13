@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Order Tracker</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#ff9966,#ff5e62);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .container{
+            width:400px;
+            background:white;
+            padding:25px;
+            border-radius:15px;
+            text-align:center;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+        }
+
+        input{
+            width:90%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            padding:10px 20px;
+            background:#ff9900;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        .result{
+            margin-top:20px;
+            background:#f8f8f8;
+            padding:15px;
+            border-radius:10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2> Amazon Order Tracker</h2>
+
+    <input type="text" id="customer" placeholder="Enter Customer Name">
+
+    <button onclick="trackOrder()">Place Order</button>
+
+    <div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+    // Callback Function
+    function sendSMS(){
+        return " SMS Sent To Customer";
+    }
+
+    // Higher-Order Function
+    function placeOrder(callback){
+        let message = " Order Placed Successfully<br>";
+        message += callback();
+        return message;
+    }
+
+    function trackOrder(){
+
+        let customerName = document.getElementById("customer").value;
+
+        let output = `
+            <h3>Customer: ${customerName}</h3>
+            ${placeOrder(sendSMS)}
+        `;
+
+        document.getElementById("result").innerHTML = output;
+    }
+
+</script>
+
+</body>
+</html>

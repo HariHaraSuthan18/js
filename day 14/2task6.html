@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Account Management</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,#11998e,#38ef7d);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container{
+            width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            color: #333;
+        }
+
+        input{
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #11998e;
+            border-radius: 8px;
+        }
+
+        button{
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .deposit{
+            background: #28a745;
+        }
+
+        .withdraw{
+            background: #dc3545;
+        }
+
+        .balance{
+            background: #007bff;
+        }
+
+        #output{
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>Bank Account Management</h2>
+
+        <h3>Initial Balance : ₹10000</h3>
+
+        <input type="number" id="amount"
+               placeholder="Enter Amount">
+
+        <br>
+
+        <button class="deposit"
+                onclick="deposit()">
+            Deposit
+        </button>
+
+        <button class="withdraw"
+                onclick="withdraw()">
+            Withdraw
+        </button>
+
+        <button class="balance"
+                onclick="checkBalance()">
+            Check Balance
+        </button>
+
+        <div id="output">
+            Available Balance : ₹10000
+        </div>
+
+    </div>
+
+    <script>
+
+        let balance = 10000;
+
+        function deposit(){
+
+            let amount =
+            Number(document.getElementById("amount").value);
+
+            balance = balance + amount;
+
+            document.getElementById("output").innerHTML =
+            " Deposit Successful <br><br>" +
+            "Current Balance : " + balance;
+        }
+
+        function withdraw(){
+
+            let amount =
+            Number(document.getElementById("amount").value);
+
+            if(amount <= balance){
+
+                balance = balance - amount;
+
+                document.getElementById("output").innerHTML =
+                " Withdrawal Successful <br><br>" +
+                "Remaining Balance : " + balance;
+
+            }else{
+
+                document.getElementById("output").innerHTML =
+                " Insufficient Balance";
+            }
+        }
+
+        function checkBalance(){
+
+            document.getElementById("output").innerHTML =
+            " Available Balance : " + balance;
+        }
+
+    </script>
+
+</body>
+</html>

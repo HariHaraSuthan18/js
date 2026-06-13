@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Tracker</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,#4facfe,#00f2fe);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container{
+            width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            color: #333;
+        }
+
+        button{
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #output{
+            margin-top: 20px;
+            text-align: left;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2> Student Attendance Tracker</h2>
+
+        <button onclick="showStudents()">
+            View Students
+        </button>
+
+        <div id="output"></div>
+
+    </div>
+
+    <script>
+
+        function showStudents(){
+
+            let students = [
+                "Hari",
+                "Rahul",
+                "Kiran",
+                "Arun",
+                "Vijay",
+                "Ajay",
+                "Naveen",
+                "Surya",
+                "Praveen",
+                "Karthik"
+            ];
+
+            let result = "<h3> Student List</h3>";
+
+            for(let student of students){
+                result += " " + student + "<br>";
+            }
+
+            result += "<hr>";
+            result += "<h3>Total Students : " + students.length + "</h3>";
+
+            document.getElementById("output").innerHTML = result;
+        }
+
+    </script>
+
+</body>
+</html>

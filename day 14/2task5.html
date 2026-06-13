@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Cart</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,#667eea,#764ba2);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container{
+            width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            color: #333;
+        }
+
+        button{
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #218838;
+        }
+
+        #output{
+            margin-top: 20px;
+            text-align: left;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2> E-Commerce Cart</h2>
+
+        <button onclick="showCart()">
+            View Cart Details
+        </button>
+
+        <div id="output"></div>
+
+    </div>
+
+    <script>
+
+        function showCart(){
+
+            let cart = [
+                { product: "Mobile", price: 15000 },
+                { product: "Headset", price: 2000 },
+                { product: "Charger", price: 1000 }
+            ];
+
+            let total = 0;
+            let expensive = cart[0];
+
+            let result = "<h3> Product List</h3>";
+
+            for(let item of cart){
+
+                result += " " + item.product +
+                           + item.price + "<br>";
+
+                total += item.price;
+
+                if(item.price > expensive.price){
+                    expensive = item;
+                }
+            }
+
+            result += "<hr>";
+            result += "<h3> Total Cart Value : ₹" + total + "</h3>";
+
+            result += "<h3> Most Expensive Product</h3>";
+            result += " " + expensive.product +
+                      " - " + expensive.price;
+
+            document.getElementById("output").innerHTML = result;
+        }
+
+    </script>
+
+</body>
+</html>

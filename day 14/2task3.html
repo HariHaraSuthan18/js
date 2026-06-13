@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Delivery Menu</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,#ff9966,#ff5e62);
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1{
+            color: white;
+        }
+
+        .card{
+            display: inline-block;
+            width: 200px;
+            background: white;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        button{
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result{
+            margin-top: 30px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        #confirmSection{
+            display: none;
+            margin-top: 20px;
+        }
+
+        #confirmBtn{
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> Food Delivery Menu</h1>
+
+    <div class="card">
+        <h2> Pizza</h2>
+        <button onclick="selectFood('Pizza')">Order Now</button>
+    </div>
+
+    <div class="card">
+        <h2> Burger</h2>
+        <button onclick="selectFood('Burger')">Order Now</button>
+    </div>
+
+    <div class="card">
+        <h2>Shawarma</h2>
+        <button onclick="selectFood('Shawarma')">Order Now</button>
+    </div>
+
+    <div class="card">
+        <h2> Fried Rice</h2>
+        <button onclick="selectFood('Fried Rice')">Order Now</button>
+    </div>
+
+    <div id="confirmSection">
+        <h2 id="message"></h2>
+        <button id="confirmBtn" onclick="confirmOrder()">
+            Confirm Order
+        </button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+
+        let selectedFood = "";
+
+        function selectFood(food){
+
+            selectedFood = food;
+
+            document.getElementById("confirmSection").style.display = "block";
+
+            document.getElementById("message").innerHTML =
+            " Confirm Your Order : " + food;
+        }
+
+        function confirmOrder(){
+
+            document.getElementById("result").innerHTML =
+            " Thanks For Your Order <br><br>  " + selectedFood;
+
+            document.getElementById("confirmSection").style.display = "none";
+        }
+
+    </script>
+
+</body>
+</html>

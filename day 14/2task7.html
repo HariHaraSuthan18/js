@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Ticket Booking</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right,#ff512f,#dd2476);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container{
+            width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            color: #333;
+        }
+
+        input{
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #dd2476;
+            border-radius: 8px;
+        }
+
+        button{
+            background: #dd2476;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #output{
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2> Movie Ticket Booking</h2>
+
+        <input type="text" id="name"
+               placeholder="Enter Your Name">
+
+        <input type="number" id="age"
+               placeholder="Enter Your Age">
+
+        <br>
+
+        <button onclick="bookTicket()">
+            Book Ticket
+        </button>
+
+        <div id="output">
+            Enter your details to check ticket price 
+        </div>
+
+    </div>
+
+    <script>
+
+        function bookTicket(){
+
+            let name =
+            document.getElementById("name").value;
+
+            let age =
+            Number(document.getElementById("age").value);
+
+            let ticketPrice;
+
+            if(age < 5){
+                ticketPrice = "Free Ticket 🎉";
+            }
+            else if(age <= 18){
+                ticketPrice = "₹100";
+            }
+            else if(age <= 60){
+                ticketPrice = "₹200";
+            }
+            else{
+                ticketPrice = "₹120";
+            }
+
+            document.getElementById("output").innerHTML =
+            " Booking Confirmed <br><br>" +
+            " Name : " + name + "<br>" +
+            " Age : " + age + "<br>" +
+            " Ticket Price : " + ticketPrice;
+        }
+
+    </script>
+
+</body>
+</html>

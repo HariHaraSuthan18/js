@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Bonus Calculator</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .container{
+            background: white;
+            width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            color: #333;
+        }
+
+        input{
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #4facfe;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button{
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #218838;
+        }
+
+        #output{
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            color: #222;
+            text-align: left;
+        }
+
+        #output h3{
+            text-align: center;
+            color: darkblue;
+        }
+
+        .final-salary{
+            text-align: center;
+            color: green;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h2> Employee Bonus Calculator</h2>
+
+        <input type="text" id="name" placeholder="Enter Employee Name">
+
+        <input type="number" id="salary" placeholder="Enter Salary">
+
+        <input type="number" id="experience" placeholder="Enter Experience">
+
+        <br><br>
+
+        <button onclick="calculateBonus()">Calculate Bonus</button>
+
+        <div id="output"></div>
+
+    </div>
+
+    <script>
+
+        function calculateBonus(){
+
+            let name = document.getElementById("name").value;
+            let salary = Number(document.getElementById("salary").value);
+            let experience = Number(document.getElementById("experience").value);
+
+            let bonusPercent;
+
+            if(experience >= 5){
+                bonusPercent = 20;
+            }
+            else if(experience >= 2){
+                bonusPercent = 10;
+            }
+            else{
+                bonusPercent = 5;
+            }
+
+            let bonus = salary * bonusPercent / 100;
+            let finalSalary = salary + bonus;
+
+            document.getElementById("output").style.display = "block";
+
+            document.getElementById("output").innerHTML = `
+                <h3> Bonus Report</h3>
+
+                <p><b> Employee Name:</b> ${name}</p>
+
+                <p><b> Salary:</b> ₹${salary}</p>
+
+                <p><b> Experience:</b> ${experience} Years</p>
+
+                <p><b> Bonus:</b> ${bonusPercent}% (₹${bonus})</p>
+
+                <hr>
+
+                <p class="final-salary">
+                    Final Salary<br>
+                    ₹${finalSalary}
+                </p>
+            `;
+        }
+
+    </script>
+
+</body>
+</html>
